@@ -22,6 +22,7 @@ class UnboundedViewport extends Viewport {
     Key? center,
     double? cacheExtent,
     List<Widget> slivers = const <Widget>[],
+    Clip clipBehavior = Clip.hardEdge,
   })  : _anchor = anchor,
         super(
             key: key,
@@ -30,6 +31,7 @@ class UnboundedViewport extends Viewport {
             offset: offset,
             center: center,
             cacheExtent: cacheExtent,
+            clipBehavior: clipBehavior,
             slivers: slivers);
 
   // [Viewport] enforces constraints on [Viewport.anchor], so we need our own
@@ -70,6 +72,7 @@ class UnboundedRenderViewport extends RenderViewport {
     List<RenderSliver>? children,
     RenderSliver? center,
     double? cacheExtent,
+    Clip clipBehavior = Clip.hardEdge,
   })  : _anchor = anchor,
         super(
             axisDirection: axisDirection,
@@ -77,6 +80,7 @@ class UnboundedRenderViewport extends RenderViewport {
             offset: offset,
             center: center,
             cacheExtent: cacheExtent,
+            clipBehavior: clipBehavior,
             children: children);
 
   static const int _maxLayoutCycles = 10;

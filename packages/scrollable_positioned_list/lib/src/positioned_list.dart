@@ -44,6 +44,7 @@ class PositionedList extends StatefulWidget {
     this.addSemanticIndexes = true,
     this.addRepaintBoundaries = true,
     this.addAutomaticKeepAlives = true,
+    this.clipBehavior = Clip.hardEdge,
   })  : assert(itemCount != null),
         assert(itemBuilder != null),
         assert((positionedIndex == 0) || (positionedIndex < itemCount)),
@@ -51,6 +52,11 @@ class PositionedList extends StatefulWidget {
 
   /// Number of items the [itemBuilder] can produce.
   final int itemCount;
+
+  /// {@macro flutter.material.Material.clipBehavior}
+  ///
+  /// Defaults to [Clip.hardEdge].
+  final Clip clipBehavior;
 
   /// Called to build children for the list with
   /// 0 <= index < itemCount.
@@ -176,6 +182,7 @@ class _PositionedListState extends State<PositionedList> {
           cacheExtent: widget.cacheExtent,
           physics: widget.physics,
           shrinkWrap: widget.shrinkWrap,
+          clipBehavior: widget.clipBehavior,
           semanticChildCount: widget.semanticChildCount ?? widget.itemCount,
           slivers: <Widget>[
             if (widget.positionedIndex > 0)
